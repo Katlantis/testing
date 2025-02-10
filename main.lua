@@ -79,7 +79,7 @@ function HM:mango()
 	fadeInAndMove()
 end
 HM.mango()
-wait(1.8)
+wait(2)
 
 function HM:RNHash() : string
 	return tostring(table.create(math.random(1,10),nil)):gsub('table: ','')
