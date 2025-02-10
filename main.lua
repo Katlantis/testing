@@ -79,7 +79,7 @@ function HM:mango()
 	fadeInAndMove()
 end
 HM.mango()
-wait(3.4)
+wait(3.3)
 
 function HM:RNHash() : string
 	return tostring(table.create(math.random(1,10),nil)):gsub('table: ','')
@@ -1080,7 +1080,7 @@ function HM.new(self)
 	self.Dropdown = {};
 
 	local HarmonyLib = Instance.new("ScreenGui")
-	local WindowFrame = Instance.new("Frame")
+	local WindowFrame = Instance.new("VideoFrame")
 	local UICorner = Instance.new("UICorner")
 	local DropShadow = Instance.new("ImageLabel")
 	local Headers = Instance.new("Frame")
@@ -1139,6 +1139,12 @@ function HM.new(self)
 	WindowFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 	WindowFrame.Size = UDim2.fromOffset(0,22)
 	WindowFrame.Active = true
+	
+	WindowFrame.Video = getcustomasset(self.VideoID) or "Thugborean.mp4"
+	WindowFrame.Visible = true
+	WindowFrame.Looped = true
+	WindowFrame.Volume = self.Volume or 0.3
+	WindowFrame:Play()
 
 	TweenSv:Create(WindowFrame , TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
 		Size = UDim2.new(self.Scale.X.Scale,self.Scale.X.Offset,0,21)
@@ -2056,6 +2062,15 @@ function HM.new(self)
 					ParagraphSrc.ClipsDescendants = true
 					ParagraphSrc.Size = UDim2.new(1, -5, 0, 40)
 					ParagraphSrc.ZIndex = 11
+					
+					--[[
+					ParagraphSrc.Video = getcustomasset("Thugwaffen.mp4")
+					ParagraphSrc.Active = true
+					ParagraphSrc.Visible = true
+					ParagraphSrc.Looped = true
+					ParagraphSrc.Volume = 0.3
+					ParagraphSrc:Play()
+					]]
 
 					UICorner.CornerRadius = UDim.new(0, 2)
 					UICorner.Parent = ParagraphSrc
@@ -3209,6 +3224,8 @@ function HM.new(self)
 	end);
 
 	MinButton.MouseButton1Click:Connect(ToggleWindow);
+	
+	CloseButton.MouseButton1Click:Connect(ToggleWindow);
 
 	MinButtonT.MouseButton1Click:Connect(ToggleWindow);
 
