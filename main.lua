@@ -77,10 +77,6 @@ function HM:mango()
 	end
 
 	fadeInAndMove()
-
-	local mouse = LocalPlayer:GetMouse()
-
-	mouse.Icon = "rbxassetid://13335399499"
 end
 HM.mango()
 wait(1.3)
